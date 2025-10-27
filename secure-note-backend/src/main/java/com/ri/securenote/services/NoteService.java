@@ -8,6 +8,7 @@ public interface NoteService {
 
     Note createNoteForUser(String userName, String content);
     Note updateNoteForUser(Long noteId, String content,String userName);
-    Note deleteNoteForUser(Long noteId, String userName);
-    List<Note> getAllNotesForUser();
+    void deleteNoteForUser(Long noteId, String userName);
+    List<Note> getNotesForUser(String userName);
+
 }
