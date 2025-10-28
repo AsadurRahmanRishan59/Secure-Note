@@ -1,0 +1,18 @@
+use securenotes;
+
+CREATE TABLE users (
+    username VARCHAR(50) NOT NULL PRIMARY KEY,
+    password VARCHAR(100) NOT NULL,
+    enabled BOOLEAN NOT NULL
+);
+
+CREATE TABLE authorities (
+    username VARCHAR(50) NOT NULL,
+    authority VARCHAR(50) NOT NULL,
+    CONSTRAINT fk_authorities_users FOREIGN KEY (username)
+        REFERENCES users (username)
+);
+
+create unique index ix_auth_username on authorities (username,authority);
+
+https://edge12.107.ir.cdn.ir/Files/Elearning/Udemy_Spring_Security_6_with_ReactJS_OAuth2_JWT_Spring_Boot_2025-7_Downloadly.ir.part1.rar?nocache=1761646349
