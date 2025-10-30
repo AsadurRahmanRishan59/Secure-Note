@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO getUserById(Long userId) {
-        return null;
+        return convertUserToDTO(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not Found")));
     }
 
     private UserDTO convertUserToDTO(User user) {
