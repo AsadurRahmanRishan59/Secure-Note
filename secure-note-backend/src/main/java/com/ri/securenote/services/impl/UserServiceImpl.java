@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
         return convertUserToDTO(userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User Not Found")));
     }
 
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User Not Found"));
+    }
+
     private UserDTO convertUserToDTO(User user) {
         if (user == null) {
             return null;
