@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
                 user.isCredentialsNonExpired(),
                 user.isEnabled(),
                 user.getCredentialsExpiryDate(),
-                user.getAccountExpiredDate(),
+                user.getAccountExpiryDate(),
                 user.getTwoFactorSecret(),
                 user.isTwoFactorEnabled(),
                 user.getSignUpMethod(),

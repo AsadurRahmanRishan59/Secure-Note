@@ -52,7 +52,7 @@ public class User {
     private boolean enabled;
 
     private LocalDate credentialsExpiryDate;
-    private LocalDate accountExpiredDate;
+    private LocalDate accountExpiryDate;
 
     private String twoFactorSecret;
     private boolean isTwoFactorEnabled = false;

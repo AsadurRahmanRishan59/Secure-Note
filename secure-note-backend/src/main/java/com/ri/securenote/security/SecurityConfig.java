@@ -88,7 +88,7 @@ public class SecurityConfig {
                 user1.setCredentialsNonExpired(true);
                 user1.setEnabled(true);
                 user1.setCredentialsExpiryDate(LocalDate.now().plusYears(1));
-                user1.setAccountExpiredDate(LocalDate.now().plusYears(1));
+                user1.setAccountExpiryDate(LocalDate.now().plusYears(1));
                 user1.setTwoFactorEnabled(false);
                 user1.setSignUpMethod("email");
                 user1.setRole(userRole);
@@ -102,7 +102,7 @@ public class SecurityConfig {
                 admin.setCredentialsNonExpired(true);
                 admin.setEnabled(true);
                 admin.setCredentialsExpiryDate(LocalDate.now().plusYears(1));
-                admin.setAccountExpiredDate(LocalDate.now().plusYears(1));
+                admin.setAccountExpiryDate(LocalDate.now().plusYears(1));
                 admin.setTwoFactorEnabled(false);
                 admin.setSignUpMethod("email");
                 admin.setRole(adminRole);
