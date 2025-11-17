@@ -18,12 +18,18 @@ const AllNotes = () => {
 
       const parsedNotes = response.data.map((note) => ({
         ...note,
-        parsedContent: JSON.parse(note.content).content, // Assuming each note's content is JSON-formatted.
+        parsedContent: JSON.parse(note.content).content,
       }));
       setNotes(parsedNotes);
+      setError(false); // Clear any previous errors
     } catch (error) {
-      setError(error.response.data.message);
       console.error("Error fetching notes", error);
+      // Check if error.response exists before accessing it
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to fetch notes. Please check your connection.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

@@ -25,12 +25,16 @@ api.interceptors.request.use(
       try {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/api/csrf-token`,
-          { withCredentials: true }
+          { 
+            withCredentials: true,
+            timeout: 5000 
+          }
         );
         csrfToken = response.data.token;
         localStorage.setItem("CSRF_TOKEN", csrfToken);
       } catch (error) {
         console.error("Failed to fetch CSRF token", error);
+        // Don't throw error here, continue without CSRF token
       }
     }
 
@@ -41,6 +45,18 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Add response interceptor to handle errors
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.code === 'ERR_NETWORK') {
+      console.error('Network error - server might be down');
+      // You can redirect to maintenance page or show notification
+    }
     return Promise.reject(error);
   }
 );
