@@ -30,18 +30,18 @@ public class User {
     private Long userId;
 
     @NotBlank
-    @Size( max = 20)
+    @Size(max = 20)
     @Column(name = "username")
     private String username;
 
     @NotBlank
-    @Size( max = 50)
+    @Size(max = 50)
     @Email
     @Column(name = "email")
     private String email;
 
     @NotBlank
-    @Size( max = 120)
+    @Size(max = 120)
     @Column(name = "password")
     @JsonIgnore
     private String password;
@@ -60,7 +60,7 @@ public class User {
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "role_id",referencedColumnName = "role_id")
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
     @JsonBackReference
     @ToString.Exclude
     private Role role;
@@ -78,7 +78,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String username,String email){
+    public User(String username, String email) {
         this.username = username;
         this.email = email;
     }
@@ -86,7 +86,7 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if(!(o instanceof User)) return false;
+        if (!(o instanceof User)) return false;
         return userId != null && userId.equals(((User) o).getUserId());
     }
 
